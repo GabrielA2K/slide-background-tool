@@ -96,7 +96,7 @@
         file.click();
     }
     const process = (input) => {
-        console.log(input.files);
+        // console.log(input.files);
         let reader = new FileReader;
         reader.readAsDataURL(input.files[0]);
         reader.onloadend = function () {
@@ -130,7 +130,7 @@
     output_bg.style.transform = "scale(calc(calc(calc("+zval/100+" * calc(5 / var(--mul))) / 2.5) * var(--mul))) translate("+xval+"%, "+yval+"%)";
 
     zoom_slider.oninput = function() {
-        console.log(this.value);
+        // console.log(this.value);
         zval = this.value
         // background_image.style.backgroundSize= this.value +"%";
         // background_image.style.height = this.value + "%";
@@ -139,14 +139,14 @@
         output_bg.style.transform = "scale(calc(calc(calc("+zval/100+" * calc(5 / var(--mul))) / 2.5) * var(--mul))) translate("+xval+"%, "+yval+"%)";
     }
     x_slider.oninput = function() {
-        console.log(this.value);
+        // console.log(this.value);
         xval = this.value
         background_image.style.transform = "scale(calc(calc("+zval/100+" * calc(5 / var(--mul))) / 2.5))  translate("+xval+"%, "+yval+"%)";
         output_bg.style.transform = "scale(calc(calc(calc("+zval/100+" * calc(5 / var(--mul))) / 2.5) * var(--mul))) translate("+xval+"%, "+yval+"%)";
         // background_image.style.marginLeft = this.value + "%";
     }
     y_slider.oninput = function() {
-        console.log(this.value);
+        // console.log(this.value);
         yval = this.value
         background_image.style.transform = "scale(calc(calc("+zval/100+" * calc(5 / var(--mul))) / 2.5))  translate("+xval+"%, "+yval+"%)";
         output_bg.style.transform = "scale(calc(calc(calc("+zval/100+" * calc(5 / var(--mul))) / 2.5) * var(--mul))) translate("+xval+"%, "+yval+"%)";
