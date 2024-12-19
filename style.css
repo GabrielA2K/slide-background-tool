@@ -73,7 +73,7 @@ body {
     /* background-position: 50% 50%; */
 }
 
-button {
+button,a {
     transition: 300ms;
     padding: 1.2rem 2.5rem;
     border-radius: 5rem;
@@ -87,13 +87,13 @@ button {
     font-weight: 600;
     font-style: normal;
 }
-button:hover {
+button:hover,a:hover {
     transition: 400ms;
     border-radius: 1rem;
     background-color: rgb(255, 201, 100);
     cursor: pointer;
 }
-button:active {
+button:active,a:active {
     transition: 100ms;
     border-radius: 1rem;
     background-color: rgb(250, 172, 26);
@@ -105,6 +105,9 @@ input[type="file"] {
     background-color: rgba(255, 0, 0, 0);
     opacity: 0;
     cursor: pointer;
+}
+a#download {
+    text-decoration: none;
 }
 
 #actions_container {
@@ -120,6 +123,10 @@ input[type="file"] {
     justify-content: center;
     align-items: center;
     gap: 0.8rem;
+}
+.group {
+    display: flex;
+    gap: 0.5rem;
 }
 .item {
     display: flex;
@@ -207,7 +214,11 @@ input[type="range"] {
     }
     button {
         margin-top: 1rem;
-        width: 25rem;
+        width: 18rem;
+    }
+    button#dl {
+        padding-inline: 1rem;
+        width: 7rem;
     }
 }
 
@@ -235,6 +246,10 @@ input[type="range"] {
     }
     button {
         margin-top: 1rem;
-        width: 21rem;
+        width: 16rem;
+    }
+    button#dl {
+        padding-inline: 1rem;
+        width: 5.5rem;
     }
 }
