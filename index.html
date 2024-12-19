@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"><link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
 </head>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.js" integrity="sha512-sn/GHTj+FCxK5wam7k9w4gPPm6zss4Zwl/X9wgrvGMFbnedR8lTUSLdsolDRBRzsX6N+YgG6OWyvn9qaFVXH9w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -12,27 +15,38 @@
 <body>
     <div id="viewport">
         <div id="preview_container">
-            <!-- <div id="background_image">
-            </div> -->
             <img src="" alt="" id="background_image">
         </div>
-        <div id="frame" onclick="file_click()">
-
+        <div id="frame">
+            <input type="file" name="" id="file">
         </div>
         <div id="output">
             <img src="" alt="" id="output_bg">
         </div>
     </div>
 
+    <div id="actions_container">
+        <div id="image_controller">
+            <div class="item">
+                <p>Scale/Zoom</p>
+                <input type="range" name="" id="zoom_slider" min="10" max="200" value="100">
+            </div>
+            <div class="item">
+                <p>Horizontal Offset</p>
+                <input type="range" name="" id="x_slider" min="-50" max="50" value="0">
+            </div>
+            <div class="item">
+                <p>Vertical Offset</p>
+                <input type="range" name="" id="y_slider" min="-50" max="50" value="0">
+            </div>
+            
+        </div>
+        
+        <button onclick="grabscreen()">
+            Copy Background
+        </button>
+    </div>
     
-    <button onclick="grabscreen()">
-        Copy Background
-    </button>
-    
-    <input type="file" name="" id="file">
-    <input type="range" name="" id="zoom_slider" min="10" max="200" value="100">
-    <input type="range" name="" id="x_slider" min="-50" max="50" value="0">
-    <input type="range" name="" id="y_slider" min="-50" max="50" value="0">
     
 </body>
 
@@ -47,13 +61,13 @@
     const x_slider = document.getElementById('x_slider');
     const y_slider = document.getElementById('y_slider');
     const background_image = document.getElementById('background_image');
+    const preview_container= document.getElementById('preview_container');
     const output_bg = document.getElementById('output_bg');
     const file = document.getElementById('file');
     let xval = 0;
     let yval = 0;
     let zval = 100;
     // const image = document.getElementById('image');
-
     async function copyImg(src){
         const img = await fetch(src);
         const imgBlob = await img.blob();
@@ -103,16 +117,17 @@
             xval = 0;
             yval = 0;
             zval = 100;
-            background_image.style.transform = "scale(1) translate(0%, 0%)";
-            output_bg.style.transform = "scale(2) translate(0%, 0%)";
+            // background_image.style.transform = "scale("+zval/100+") translate("+xval+"%, "+yval+"%)";
+            background_image.style.transform = "scale(calc(calc("+zval/100+" * calc(5 / var(--mul))) / 2.5))  translate("+xval+"%, "+yval+"%)";
+            output_bg.style.transform = "scale(calc(calc(calc("+zval/100+" * calc(5 / var(--mul))) / 2.5) * var(--mul))) translate("+xval+"%, "+yval+"%)";
             // document.getElementById('background_image').style.backgroundImage="url("+imagedata+")";
             // console.log(imagedata)
         }
     }
 
     
-    background_image.style.transform = "scale("+zval/100+") translate("+xval+"%, "+yval+"%)";
-    output_bg.style.transform = "scale("+zval/50+") translate("+xval+"%, "+yval+"%)";
+    background_image.style.transform = "scale(calc(calc("+zval/100+" * calc(5 / var(--mul))) / 2.5))  translate("+xval+"%, "+yval+"%)";
+    output_bg.style.transform = "scale(calc(calc(calc("+zval/100+" * calc(5 / var(--mul))) / 2.5) * var(--mul))) translate("+xval+"%, "+yval+"%)";
 
     zoom_slider.oninput = function() {
         console.log(this.value);
@@ -120,23 +135,24 @@
         // background_image.style.backgroundSize= this.value +"%";
         // background_image.style.height = this.value + "%";
         // background_image.style.width = this.value + "%";
-        background_image.style.transform = "scale("+zval/100+") translate("+xval+"%, "+yval+"%)";
-        output_bg.style.transform = "scale("+zval/50+") translate("+xval+"%, "+yval+"%)";
+        background_image.style.transform = "scale(calc(calc("+zval/100+" * calc(5 / var(--mul))) / 2.5))  translate("+xval+"%, "+yval+"%)";
+        output_bg.style.transform = "scale(calc(calc(calc("+zval/100+" * calc(5 / var(--mul))) / 2.5) * var(--mul))) translate("+xval+"%, "+yval+"%)";
     }
     x_slider.oninput = function() {
         console.log(this.value);
         xval = this.value
-        background_image.style.transform = "scale("+zval/100+") translate("+xval+"%, "+yval+"%)";
-        output_bg.style.transform = "scale("+zval/50+") translate("+xval+"%, "+yval+"%)";
+        background_image.style.transform = "scale(calc(calc("+zval/100+" * calc(5 / var(--mul))) / 2.5))  translate("+xval+"%, "+yval+"%)";
+        output_bg.style.transform = "scale(calc(calc(calc("+zval/100+" * calc(5 / var(--mul))) / 2.5) * var(--mul))) translate("+xval+"%, "+yval+"%)";
         // background_image.style.marginLeft = this.value + "%";
     }
     y_slider.oninput = function() {
         console.log(this.value);
         yval = this.value
-        background_image.style.transform = "scale("+zval/100+") translate("+xval+"%, "+yval+"%)";
-        output_bg.style.transform = "scale("+zval/50+") translate("+xval+"%, "+yval+"%)";
+        background_image.style.transform = "scale(calc(calc("+zval/100+" * calc(5 / var(--mul))) / 2.5))  translate("+xval+"%, "+yval+"%)";
+        output_bg.style.transform = "scale(calc(calc(calc("+zval/100+" * calc(5 / var(--mul))) / 2.5) * var(--mul))) translate("+xval+"%, "+yval+"%)";
         // background_image.style.marginTop = this.value + "%";
     }
+    // preview_container.style.backgroundColor = "var(--c1)";
 
     
 </script>
