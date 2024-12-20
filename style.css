@@ -4,7 +4,7 @@
     padding: 0;
 }
 html {
-    background-color: rgb(17, 17, 17);
+    background-color: rgb(12, 12, 12);
 }
 body {
     height: auto;
@@ -83,8 +83,8 @@ button,a {
     font-size: 0.9rem;
     outline: none;
     border: none;
-    background-color: rgb(255, 189, 66);
-    color: rgba(26, 26, 26, 0.753);
+    background-color: rgb(255, 200, 100);
+    color: rgb(29, 29, 29);
     font-family: "Montserrat", serif;
     font-optical-sizing: auto;
     font-weight: 600;
@@ -93,19 +93,19 @@ button,a {
 button:hover,a:hover {
     transition: 400ms;
     border-radius: 1.4rem;
-    background-color: rgb(255, 201, 100);
+    background-color: rgb(255, 221, 157);
     cursor: pointer;
 }
 button:active,a:active {
     transition: 100ms;
     border-radius: 1rem;
-    background-color: rgb(250, 172, 26);
+    background-color: rgb(255, 200, 100);
     cursor: pointer;
 }
 input[type="file"] {
     height: 100%;
     width: 100%;
-    background-color: rgba(255, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
     opacity: 0;
     cursor: pointer;
 }
@@ -129,7 +129,7 @@ a#download {
 }
 .not_ready {
     transition: opacity 300ms;
-    opacity: 0.5;
+    opacity: 0.3;
     pointer-events: none;
 }
 .fabs {
@@ -146,7 +146,7 @@ a#download {
     font-size: 0.8rem;
     gap: 1rem;
     border: 0px solid rgb(221, 221, 221);
-    background-color: rgb(5, 5, 5);
+    background-color: rgb(20, 20, 20);
     border-radius: 0.8rem;
     padding: 1.1rem 1.8rem 1.5rem 1.8rem;
     color: #cccccc;
@@ -175,7 +175,7 @@ input[type="range"] {
     height: 16px;
     border-radius: 5rem;
     border: 2.5px solid rgb(255, 243, 222);
-    background: rgb(255, 201, 100);
+    background: rgb(255, 200, 100);
     cursor: pointer;
     box-shadow: 0rem 0rem 6px rgba(0, 0, 0, 0.151);
   }
@@ -184,7 +184,7 @@ input[type="range"] {
     width: 15px;
     height: 15px;
     border-radius: 5rem;
-    background: rgb(255, 201, 100);
+    background: rgb(255, 200, 100);
     cursor: pointer;
   }
 
@@ -280,12 +280,11 @@ input[type="range"] {
     }
     button:hover,a:hover {
         border-radius: 5rem;
-        background-color: rgb(255, 189, 66);
+        background-color: rgb(255, 200, 100);
     }
     button:active,a:active {
         transition: 100ms;
         border-radius: 1.4rem;
-        background-color: rgb(250, 172, 26);
     }
     button#dl {
         padding-inline: 1rem;
@@ -335,16 +334,16 @@ input[type="range"] {
         height: 25px;
         border-radius: 0;
         border: 0px solid white;
-        background: rgba(255, 201, 100, 1);
+        background: rgb(255, 200, 100);
         cursor: pointer;
-        box-shadow: -300px 0px 0px 300px rgb(255, 201, 100);
+        box-shadow: -300px 0px 0px 300px rgb(255, 200, 100);
       }
       
       input[type="range"]::-moz-range-thumb {
         width: 15px;
         height: 15px;
         border-radius: 5rem;
-        background: rgb(255, 201, 100);
+        background: rgb(255, 200, 100);
         cursor: pointer;
       }
 }
