@@ -103,7 +103,7 @@
                  'image/png': imgBlob, // change image type accordingly
              })
            ]);
-            alert("Image copied to clipboard");
+            // alert("Image copied to clipboard");
          } catch (error) {
             alert("Failed to copy image");
             console.error(error);
@@ -143,6 +143,19 @@
     }
 
     function downloader(){
+        const div_output = document.createElement('div');
+        div_output.setAttribute('id', 'output');
+        document.getElementById('viewport').appendChild(div_output);
+
+        const div_output_bg = document.createElement('img');
+        div_output_bg.setAttribute('id', 'output_bg');
+        document.getElementById('output').appendChild(div_output_bg);
+
+        document.getElementById('output_bg').src = imagedata;
+
+        refresh_style();
+        document.getElementById('output_bg').style.transform = output_style;
+
         html2canvas(document.querySelector("#output")).then(canvas => {
             let image = canvas.toDataURL("image/png");
             copyImg(image);
@@ -150,6 +163,8 @@
             document.getElementById('download').href = image;
             document.getElementById('download').click();
         });
+
+        document.getElementById('output').remove();
     }
 
     const process = (input) => {
