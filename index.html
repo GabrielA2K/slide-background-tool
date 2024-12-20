@@ -20,9 +20,9 @@
         <div id="frame">
             <input type="file" name="" id="file">
         </div>
-        <div id="output">
+        <!-- <div id="output">
             <img src="" alt="" id="output_bg">
-        </div>
+        </div> -->
     </div>
 
     <div id="actions_container">
@@ -42,12 +42,10 @@
             
         </div>
         <div class="group">
-            <button onclick="grabscreen()">
-                Copy Background
-            </button>
-            <button id="dl" onclick="downloader()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><rect width="24" height="24" fill="none"/><g fill="none"><path d="M24 0v24H0V0zM12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036q-.016-.004-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M5 18.5a1.5 1.5 0 0 0 0 3h14a1.5 1.5 0 0 0 0-3zm12.303-7.556a1.5 1.5 0 0 0-2.121 0L13.5 12.625V4a1.5 1.5 0 0 0-3 0v8.626l-1.682-1.682a1.5 1.5 0 1 0-2.122 2.121l4.243 4.243a1.5 1.5 0 0 0 2.121 0l4.243-4.243a1.5 1.5 0 0 0 0-2.121"/></g></svg>
-            </button>
+            <button class="fab" id="copy_btn" onclick="grabscreen()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="30" viewBox="0 0 24 24"><rect width="24" height="24" fill="none"/><g fill="none" fill-rule="evenodd"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M9 2a2 2 0 0 0-2 2v2h2V4h11v11h-2v2h2a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM4 7a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/></g></svg>            </button>
+            <button class="fab" id="dl" onclick="downloader()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><rect width="24" height="24" fill="none"/><g fill="none"><path d="M24 0v24H0V0zM12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036q-.016-.004-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M5 19a1 1 0 1 0 0 2h14a1 1 0 1 0 0-2zm11.95-7.703a1 1 0 0 0-1.415 0L13 13.833V4a1 1 0 0 0-2 0v9.833l-2.536-2.536a1 1 0 0 0-1.414 1.415l4.243 4.242a1 1 0 0 0 1.414 0l4.243-4.242a1 1 0 0 0 0-1.415"/></g></svg>            </button>
             <a id="download" style="display: none;">
                 
             </a>
@@ -65,17 +63,37 @@
 
 
 <script>
-    const zoom_slider = document.getElementById('zoom_slider');
-    const x_slider = document.getElementById('x_slider');
-    const y_slider = document.getElementById('y_slider');
-    const background_image = document.getElementById('background_image');
-    const preview_container= document.getElementById('preview_container');
-    const output_bg = document.getElementById('output_bg');
-    const file = document.getElementById('file');
-    let xval = 0;
-    let yval = 0;
-    let zval = 100;
-    // const image = document.getElementById('image');
+    //DECLARATIONS
+    const 
+        zoom_slider = document.getElementById('zoom_slider'),
+        x_slider = document.getElementById('x_slider'),
+        y_slider = document.getElementById('y_slider'),
+        background_image = document.getElementById('background_image'),
+        preview_container= document.getElementById('preview_container'),
+        output_bg = document.getElementById('output_bg'),
+        file = document.getElementById('file')
+    ;
+
+    let 
+        imagedata,
+        xval = 0,
+        yval = 0,
+        zval = 100
+    ;
+
+    let 
+        mul = "var(--mul)",
+        scale_rate = "calc(5 / 1.2)",
+        scale_perc = "calc(5 / "+mul+")",
+        scale = "calc(calc("+zval/100+" * "+scale_perc+") / "+scale_rate+")",
+        bg_style = "scale("+scale+")  translate("+xval+"%, "+yval+"%)",
+        output_style = "scale(calc("+scale+" * "+mul+")) translate("+xval+"%, "+yval+"%)"
+    ;
+
+
+
+
+    //FUNCTIONS
     async function copyImg(src){
         const img = await fetch(src);
         const imgBlob = await img.blob();
@@ -85,45 +103,64 @@
                  'image/png': imgBlob, // change image type accordingly
              })
            ]);
+            alert("Image copied to clipboard");
          } catch (error) {
-             console.error(error);
+            alert("Failed to copy image");
+            console.error(error);
          }
     }
-    function grabscreen(){
-        
-        html2canvas(document.querySelector("#output")).then(canvas => {
-        // document.body.appendChild(canvas)
-        let image = canvas.toDataURL("image/png");
-        copyImg(image);
-        
-    });
-    }
-    function downloader(){
-        
-        html2canvas(document.querySelector("#output")).then(canvas => {
-        // document.body.appendChild(canvas)
-        let image = canvas.toDataURL("image/png");
-        copyImg(image);
-        document.getElementById('download').download = "background.png";
-        document.getElementById('download').href = image;
-        document.getElementById('download').click();
-        
-    });
+
+    function refresh_style(){
+        scale = "calc(calc("+zval/100+" * "+scale_perc+") / "+scale_rate+")";
+        bg_style = "scale("+scale+")  translate("+xval+"%, "+yval+"%)",
+        output_style = "scale(calc("+scale+" * "+mul+")) translate("+xval+"%, "+yval+"%)"
+        background_image.style.transform = bg_style;
+        // output_bg.style.transform = output_style;
     }
 
-    file.addEventListener('change', ()=>{process(file)})
-    const file_click = () => {
-        file.click();
+    function grabscreen(){ 
+        const div_output = document.createElement('div');
+        div_output.setAttribute('id', 'output');
+        document.getElementById('viewport').appendChild(div_output);
+
+        const div_output_bg = document.createElement('img');
+        div_output_bg.setAttribute('id', 'output_bg');
+        document.getElementById('output').appendChild(div_output_bg);
+
+        document.getElementById('output_bg').src = imagedata;
+
+        refresh_style();
+        document.getElementById('output_bg').style.transform = output_style;
+
+
+        html2canvas(document.querySelector("#output")).then(canvas => {
+        // document.body.appendChild(canvas)
+            let image = canvas.toDataURL("image/png");
+            copyImg(image);
+        });
+
+        document.getElementById('output').remove();
     }
+
+    function downloader(){
+        html2canvas(document.querySelector("#output")).then(canvas => {
+            let image = canvas.toDataURL("image/png");
+            copyImg(image);
+            document.getElementById('download').download = "background.png";
+            document.getElementById('download').href = image;
+            document.getElementById('download').click();
+        });
+    }
+
     const process = (input) => {
         // console.log(input.files);
         let reader = new FileReader;
         reader.readAsDataURL(input.files[0]);
         reader.onloadend = function () {
-            let imagedata = reader.result;
+            imagedata = reader.result;
             // image.src = imagedata;
             background_image.src = imagedata;
-            output_bg.src = imagedata;
+            // output_bg.src = imagedata;
             
             // const img = new Image();
             // img.onload = function() {
@@ -137,42 +174,35 @@
             xval = 0;
             yval = 0;
             zval = 100;
-            // background_image.style.transform = "scale("+zval/100+") translate("+xval+"%, "+yval+"%)";
-            background_image.style.transform = "scale(calc(calc("+zval/100+" * calc(5 / var(--mul))) / 2.5))  translate("+xval+"%, "+yval+"%)";
-            output_bg.style.transform = "scale(calc(calc(calc("+zval/100+" * calc(5 / var(--mul))) / 2.5) * var(--mul))) translate("+xval+"%, "+yval+"%)";
-            // document.getElementById('background_image').style.backgroundImage="url("+imagedata+")";
-            // console.log(imagedata)
+            refresh_style();
+            
         }
     }
 
     
-    background_image.style.transform = "scale(calc(calc("+zval/100+" * calc(5 / var(--mul))) / 2.5))  translate("+xval+"%, "+yval+"%)";
-    output_bg.style.transform = "scale(calc(calc(calc("+zval/100+" * calc(5 / var(--mul))) / 2.5) * var(--mul))) translate("+xval+"%, "+yval+"%)";
+
+
+    //EVENTS
+    file.addEventListener('change', ()=>{
+        process(file)
+    })
+
+    refresh_style();
 
     zoom_slider.oninput = function() {
-        // console.log(this.value);
         zval = this.value
-        // background_image.style.backgroundSize= this.value +"%";
-        // background_image.style.height = this.value + "%";
-        // background_image.style.width = this.value + "%";
-        background_image.style.transform = "scale(calc(calc("+zval/100+" * calc(5 / var(--mul))) / 2.5))  translate("+xval+"%, "+yval+"%)";
-        output_bg.style.transform = "scale(calc(calc(calc("+zval/100+" * calc(5 / var(--mul))) / 2.5) * var(--mul))) translate("+xval+"%, "+yval+"%)";
+        refresh_style();
     }
+
     x_slider.oninput = function() {
-        // console.log(this.value);
         xval = this.value
-        background_image.style.transform = "scale(calc(calc("+zval/100+" * calc(5 / var(--mul))) / 2.5))  translate("+xval+"%, "+yval+"%)";
-        output_bg.style.transform = "scale(calc(calc(calc("+zval/100+" * calc(5 / var(--mul))) / 2.5) * var(--mul))) translate("+xval+"%, "+yval+"%)";
-        // background_image.style.marginLeft = this.value + "%";
+        refresh_style();
     }
+
     y_slider.oninput = function() {
-        // console.log(this.value);
         yval = this.value
-        background_image.style.transform = "scale(calc(calc("+zval/100+" * calc(5 / var(--mul))) / 2.5))  translate("+xval+"%, "+yval+"%)";
-        output_bg.style.transform = "scale(calc(calc(calc("+zval/100+" * calc(5 / var(--mul))) / 2.5) * var(--mul))) translate("+xval+"%, "+yval+"%)";
-        // background_image.style.marginTop = this.value + "%";
+        refresh_style();
     }
-    // preview_container.style.backgroundColor = "var(--c1)";
 
     
 </script>
