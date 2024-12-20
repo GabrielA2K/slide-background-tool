@@ -158,7 +158,7 @@
 
         html2canvas(document.querySelector("#output")).then(canvas => {
             let image = canvas.toDataURL("image/png");
-            copyImg(image);
+            // copyImg(image);
             document.getElementById('download').download = "background.png";
             document.getElementById('download').href = image;
             document.getElementById('download').click();
