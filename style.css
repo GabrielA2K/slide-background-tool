@@ -55,6 +55,7 @@ body {
     background-color: rgba(0, 0, 0, 0);
     background-image: url(./main_frame.png);
     background-size: contain;
+    background-repeat: no-repeat;
     /* margin-top: 1px; */
     /* margin-left: -4px; */
     /* cursor: pointer; */
