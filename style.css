@@ -67,6 +67,92 @@ body {
     border: 2px solid rgb(56, 56, 56);
 }
 
+#cropping_tools {
+    position: absolute;
+    height: 12.8rem;
+    width: 3.8rem;
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.5);
+    right: 1rem;
+    bottom: 0.8rem;
+    border-radius: 100rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column-reverse;
+    padding-block: 0.5rem;
+    transition: 300ms;
+}
+#cropping_tools.collapsed {
+    height: 3rem;
+    width: 3rem;
+    padding-block: 0.25rem;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+#cropping_tools.collapsed:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+#cropping_tools:has(#cropping_tools_container.not_ready) {
+    pointer-events: none;
+}
+#cropping_tools .wrapper {
+    
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    
+    gap: 0.5rem;
+    /* background-color: red; */
+}
+#cropping_tools .wrapper button {
+    height: 2.5rem;
+    width: 2.5rem;
+    background-color: rgba(0, 0, 0, 0.116);
+    color: white;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#cropping_tools .wrapper button#flip-y {
+    transform: rotate(-90deg);
+    
+}
+#cropping_tools .wrapper button#toggle_cropping_tools svg {
+    position: absolute;
+    transform: rotate(180deg);
+}
+#cropping_tools .wrapper button#toggle_cropping_tools {
+    background-color: transparent;
+    
+}
+
+
+#cropping_tools .wrapper button svg {
+    transition: 300ms;
+}
+#cropping_tools.collapsed .wrapper button#toggle_cropping_tools svg {
+    transform: rotate(0deg);
+}
+#cropping_tools .wrapper button#rotate:hover svg {
+    transform: rotate(45deg);
+}
+#cropping_tools .wrapper button#flip-x:hover svg,
+#cropping_tools .wrapper button#flip-y:hover svg {
+    transform: rotateY(180deg);
+}
+
+#cropping_tools.collapsed .wrapper button#toggle_cropping_tools svg#chevron_icon,
+#cropping_tools .wrapper button#toggle_cropping_tools svg#crop_icon {
+    opacity: 0;
+}
+
+#cropping_tools .wrapper button#toggle_cropping_tools svg#chevron_icon,
+#cropping_tools.collapsed .wrapper button#toggle_cropping_tools svg#crop_icon {
+    opacity: 1;
+}
+
+
+
 #output {
     position: absolute;
     left: 120dvw;
@@ -212,6 +298,14 @@ input[type="range"] {
   button#dl {
     bottom: 6.8rem;
   }
+  button#rotate {
+    bottom: 11.6rem;
+  }
+  #aa {
+    opacity: 0.2;
+  }
+
+
   .fab .icon {
     visibility: hidden;
     position: absolute;
@@ -277,12 +371,25 @@ input[type="range"] {
         width: 22rem;
     }
     button {
-        margin-top: 1rem;
+        /* margin-top: 1rem; */
         width: 18rem;
     }
     button#dl {
         padding-inline: 1rem;
         width: 7rem;
+    }
+
+
+
+    #cropping_tools {
+        height: 12.8rem;
+        width: 3.8rem;
+        right: -0.8rem;
+        bottom: -0.25rem;
+    }
+    #cropping_tools.collapsed {
+        right: -0.8rem;
+        bottom: -0.8rem;
     }
 }
 
@@ -309,7 +416,7 @@ input[type="range"] {
         width: 18rem;
     }
     button {
-        margin-top: 1rem;
+        /* margin-top: 1rem; */
         width: 16rem;
     }
     button:hover,a:hover {
@@ -376,4 +483,12 @@ input[type="range"] {
         background: rgb(255, 200, 100);
         cursor: pointer;
       }
+
+        #cropping_tools .wrapper button#rotate:hover svg {
+            transform: rotate(0deg);
+        }
+        #cropping_tools .wrapper button#flip-x:hover svg,
+        #cropping_tools .wrapper button#flip-y:hover svg {
+            transform: rotateY(0deg);
+        }
 }
