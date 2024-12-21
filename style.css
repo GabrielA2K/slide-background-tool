@@ -43,6 +43,11 @@ body {
     /* background-position: 50% 50%; */
     border: 2px solid rgb(56, 56, 56);
 }
+#preview_container.empty {
+    background: rgb(254,81,112);
+    background: linear-gradient(75deg, rgba(254,81,112,1) 30%, rgba(254,133,67,1) 70%, rgba(255,208,76,1) 100%);
+}
+
 #background_image  {
     transition: 100ms;
 }
@@ -93,13 +98,11 @@ button,a {
 }
 button:hover,a:hover {
     transition: 400ms;
-    border-radius: 1.4rem;
     background-color: rgb(255, 221, 157);
     cursor: pointer;
 }
 button:active,a:active {
     transition: 100ms;
-    border-radius: 1rem;
     background-color: rgb(255, 200, 100);
     cursor: pointer;
 }
@@ -209,6 +212,36 @@ input[type="range"] {
   button#dl {
     bottom: 6.8rem;
   }
+  .fab .icon {
+    visibility: hidden;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .fab.copy_available #available.icon {
+    visibility: visible;
+  }
+  .fab.copy_copied #copied.icon {
+    visibility: visible;
+  }
+  .fab.copy_loading #loading.icon {
+    visibility: visible;
+  }
+
+  button#copy_btn.copy_loading,
+  button#copy_btn.copy_copied {
+    pointer-events: none;
+  }
+
+  button#copy_btn.copy_copied {
+    background-color: #1f1f1f;
+    color: rgb(255, 200, 100);;
+  }
+
 
 
 @media screen and (max-width: 1400px) {
@@ -280,12 +313,8 @@ input[type="range"] {
         width: 16rem;
     }
     button:hover,a:hover {
-        border-radius: 5rem;
+        /* border-radius: 5rem; */
         background-color: rgb(255, 200, 100);
-    }
-    button:active,a:active {
-        transition: 100ms;
-        border-radius: 1.4rem;
     }
     button#dl {
         padding-inline: 1rem;
@@ -341,9 +370,9 @@ input[type="range"] {
       }
       
       input[type="range"]::-moz-range-thumb {
-        width: 15px;
-        height: 15px;
-        border-radius: 5rem;
+        width: 25px;
+        height: 25px;
+        border-radius: 0;
         background: rgb(255, 200, 100);
         cursor: pointer;
       }

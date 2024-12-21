@@ -14,8 +14,8 @@
 
 <body>
     <div id="viewport">
-        <div id="preview_container">
-            <img src="default_bg.png" alt="" id="background_image">
+        <div id="preview_container" class="empty">
+            <img src="" alt="" id="background_image">
         </div>
         <div id="frame">
             <input type="file" name="" id="file" accept=".png,.jpg,.jpeg,.webp">
@@ -42,10 +42,21 @@
             
         </div>
         <div id="FABs" class="not_ready">
-            <button class="fab" id="copy_btn" onclick="grabscreen()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"><rect width="24" height="24" fill="none"/><g fill="none" fill-rule="evenodd"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M9 2a2 2 0 0 0-2 2v2h2V4h11v11h-2v2h2a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM4 7a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zm0 2h11v11H4z"/></g></svg>            <button class="fab" id="dl" onclick="downloader()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><rect width="24" height="24" fill="none"/><g fill="none"><path d="M24 0v24H0V0zM12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036q-.016-.004-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M5 19a1 1 0 1 0 0 2h14a1 1 0 1 0 0-2zm11.95-7.703a1 1 0 0 0-1.415 0L13 13.833V4a1 1 0 0 0-2 0v9.833l-2.536-2.536a1 1 0 0 0-1.414 1.415l4.243 4.242a1 1 0 0 0 1.414 0l4.243-4.242a1 1 0 0 0 0-1.415"/></g></svg>            </button>
-            <a id="download" style="display: none;">
+            <button class="fab copy_available" id="copy_btn" onclick="grabscreen()">
+                <div id="available" class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"><rect width="24" height="24" fill="none"/><g fill="none" fill-rule="evenodd"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M9 2a2 2 0 0 0-2 2v2h2V4h11v11h-2v2h2a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM4 7a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zm0 2h11v11H4z"/></g></svg>
+                </div>
+                <div id="loading" class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><rect width="24" height="24" fill="none"/><path fill="none" stroke="currentColor" stroke-dasharray="16" stroke-dashoffset="16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3c4.97 0 9 4.03 9 9"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.2s" values="16;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></svg>
+                </div>
+                <div id="copied" class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24"><rect width="24" height="24" fill="none"/><g fill="none" fill-rule="evenodd"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M21.546 5.111a1.5 1.5 0 0 1 0 2.121L10.303 18.475a1.6 1.6 0 0 1-2.263 0L2.454 12.89a1.5 1.5 0 1 1 2.121-2.121l4.596 4.596L19.424 5.111a1.5 1.5 0 0 1 2.122 0"/></g></svg>                </div>
+            </button>
+            
+            <button class="fab" id="dl" onclick="downloader()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><rect width="24" height="24" fill="none"/><g fill="none"><path d="M24 0v24H0V0zM12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036q-.016-.004-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M5 19a1 1 0 1 0 0 2h14a1 1 0 1 0 0-2zm11.95-7.703a1 1 0 0 0-1.415 0L13 13.833V4a1 1 0 0 0-2 0v9.833l-2.536-2.536a1 1 0 0 0-1.414 1.415l4.243 4.242a1 1 0 0 0 1.414 0l4.243-4.242a1 1 0 0 0 0-1.415"/></g></svg>
+            </button>
+                <a id="download" style="display: none;">
                 
             </a>
         </div>
@@ -96,6 +107,7 @@
     async function copyImg(src){
         const img = await fetch(src);
         const imgBlob = await img.blob();
+        let failed = false;
         try {
            navigator.clipboard.write([
              new ClipboardItem({
@@ -104,16 +116,41 @@
            ]);
             // alert("Image copied to clipboard");
          } catch (error) {
-            alert("Failed to copy image");
-            console.error(error);
+            failed = true;
+            // alert("Failed to copy image");
+            // console.error(error);
+         } finally {
+            if (!failed) {
+                // alert("Image copied to clipboard");
+                document.getElementById('copy_btn').classList.remove('copy_available');
+                document.getElementById('copy_btn').classList.add('copy_loading');
+                setTimeout(() => {
+                    document.getElementById('copy_btn').classList.remove('copy_loading');
+                    document.getElementById('copy_btn').classList.add('copy_copied');
+                }, 3000);
+            } else {
+                alert("Failed to copy image");
+            }
          }
     }
 
+    function resetCopyBtn(){
+        if (document.getElementById('copy_btn').classList.contains('copy_loading')) {
+            document.getElementById('copy_btn').classList.remove('copy_loading');
+        }
+        if (document.getElementById('copy_btn').classList.contains('copy_copied')) {
+            document.getElementById('copy_btn').classList.remove('copy_copied');
+        }
+        if (!(document.getElementById('copy_btn').classList.contains('copy_available'))) {
+            document.getElementById('copy_btn').classList.add('copy_available');
+        }
+    }
     function refresh_style(){
         scale = "calc(calc("+zval/100+" * "+scale_perc+") / "+scale_rate+")";
         bg_style = "scale("+scale+")  translate("+xval+"%, "+yval+"%)",
         output_style = "scale(calc("+scale+" * "+mul+")) translate("+xval+"%, "+yval+"%)"
         background_image.style.transform = bg_style;
+        resetCopyBtn();
         // output_bg.style.transform = output_style;
     }
 
@@ -167,15 +204,32 @@
     }
 
     const process = (input) => {
-        // console.log(input.files);
+        // console.log(input.files[0].type);
         let reader = new FileReader;
         reader.readAsDataURL(input.files[0]);
         reader.onloadend = function () {
             imagedata = reader.result;
             // image.src = imagedata;
             background_image.src = imagedata;
-            document.getElementById('FABs').classList.remove('not_ready');
-            document.getElementById('image_controller').classList.remove('not_ready');
+            if (input.files[0].type == "image/png" || input.files[0].type == "image/jpeg" || input.files[0].type == "image/webp") {
+                if (document.getElementById('image_controller').classList.contains('not_ready')) {
+                    document.getElementById('image_controller').classList.remove('not_ready');
+                }
+                if (document.getElementById('FABs').classList.contains('not_ready')) {
+                    document.getElementById('FABs').classList.remove('not_ready');
+                }
+            } else {
+                if (!(document.getElementById('image_controller').classList.contains('not_ready'))) {
+                    document.getElementById('image_controller').classList.add('not_ready');
+                }
+                if (!(document.getElementById('FABs').classList.contains('not_ready'))) {
+                    document.getElementById('FABs').classList.add('not_ready');
+                }
+            }
+
+            if (document.getElementById('preview_container').classList.contains('empty')) {
+                document.getElementById('preview_container').classList.remove('empty');
+            }
             // output_bg.src = imagedata;
             
             // const img = new Image();
@@ -191,6 +245,7 @@
             yval = 0;
             zval = 100;
             refresh_style();
+            resetCopyBtn();
             
         }
     }
