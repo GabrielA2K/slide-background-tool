@@ -76,7 +76,7 @@
             </div>
             <div class="item">
                 <p>Horizontal Offset</p>
-                <input type="range" name="" id="x_slider" min="-50" max="50" value="0">
+                <input type="range" name="" id="x_slider" min="-50" max="100" value="25">
             </div>
             <div class="item">
                 <p>Vertical Offset</p>
@@ -151,7 +151,7 @@
 
     let 
         imagedata,
-        xval = 0,
+        xval = 25,
         yval = 0,
         zval = 100,
         rotation = 0,
@@ -318,9 +318,9 @@
             // img.src = imagedata;
 
             zoom_slider.value = 100;
-            x_slider.value = 0;
+            x_slider.value = 25;
             y_slider.value = 0;
-            xval = 0;
+            xval = 25;
             yval = 0;
             zval = 100;
             rotation = 0;
