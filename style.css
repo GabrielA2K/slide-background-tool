@@ -59,7 +59,7 @@ body {
     border-radius: 0.8rem;
     background-color: rgba(0, 0, 0, 0);
     background-image: url(./main_frame.png);
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     /* margin-top: 1px; */
     /* margin-left: -4px; */
